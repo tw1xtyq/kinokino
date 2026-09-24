@@ -24,6 +24,7 @@ label { color: #ebebef; display: block; font-size: 12px; font-weight: 650; margi
 input { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 11px; caret-color: #ff8b18; color: #fff; font: inherit; font-size: 13px; outline: none; padding: 12px 13px 12px 40px; transition: border-color .2s ease, box-shadow .2s ease, background .2s ease; width: 100%; }
 input::placeholder { color: #72727d; }
 input:focus { background: rgba(255,255,255,.085); border-color: #ff8510; box-shadow: 0 0 0 3px rgba(255,122,0,.16); }
+input[readonly] { color: #d9d9df; cursor: default; }
 .input-wrap:focus-within .globe { color: #ff8b18; }
 .hint { color: #80808b; font-size: 10px; margin: 7px 0 17px; }
 
@@ -36,8 +37,9 @@ button { border: 0; cursor: pointer; font-family: inherit; font-size: 12px; font
 .check { display: none; height: 15px; width: 15px; }
 .save.is-saved .button-text { display: none; }
 .save.is-saved .check { animation: pop .3s ease-out; display: block; }
-.reset { background: transparent; border: 1px solid rgba(255,255,255,.13); border-radius: 10px; color: #b9b9c1; padding: 10px 13px; transition: color .18s ease, background .18s ease, border-color .18s ease; }
-.reset:hover { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.25); color: #fff; }
+.source-link { align-items: center; border: 1px solid rgba(255,255,255,.13); border-radius: 10px; color: #b9b9c1; display: flex; font-size: 12px; font-weight: 700; padding: 10px 13px; text-decoration: none; transition: color .18s ease, background .18s ease, border-color .18s ease; }
+.source-link:hover { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.25); color: #fff; }
+.save:disabled { cursor: wait; filter: saturate(.7); opacity: .8; }
 output { display: block; font-size: 11px; font-weight: 600; margin-top: 12px; min-height: 15px; }
 output:not(:empty) { animation: rise .22s ease-out; color: #72df94; }
 output[data-error="true"] { color: #ff8f8f; }

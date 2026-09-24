@@ -19,21 +19,21 @@
         <span class="online"><i></i> Активно</span>
       </header>
 
-      <p class="intro">Укажите сайт, который будет открываться по кнопке «Смотреть» на странице фильма.</p>
+      <p class="intro">Рабочий домен обновляется автоматически. При нажатии «Смотреть» расширение проверяет источник.</p>
 
-      <form id="settings-form" novalidate>
-        <label for="domain">Адрес сайта</label>
+      <section>
+        <label for="domain">Текущий домен</label>
         <div class="input-wrap">
           <svg class="globe" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.25" stroke="currentColor" stroke-width="1.7"/><path d="M3.75 12h16.5M12 3.75c2.15 2.27 3.23 5.02 3.23 8.25S14.15 18 12 20.25C9.85 18 8.77 15.25 8.77 12S9.85 6.02 12 3.75Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-          <input id="domain" type="text" inputmode="url" placeholder="www.kinokino.vip" autocomplete="off" spellcheck="false">
+          <input id="domain" type="text" placeholder="Проверяем…" readonly>
         </div>
-        <p class="hint">Можно указать домен или полный URL.</p>
+        <p class="hint">Последний домен, полученный из источника.</p>
 
         <div class="actions">
-          <button id="save" class="save" type="submit"><span class="button-text">Сохранить</span><svg class="check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.2 4L19 7" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button id="reset" class="reset" type="button" title="Вернуть исходный домен">Сбросить</button>
+          <button id="refresh" class="save" type="button"><span class="button-text">Проверить сейчас</span><svg class="check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.2 4L19 7" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <a class="source-link" href="https://brogiro.cfd/" target="_blank" rel="noreferrer">Источник</a>
         </div>
-      </form>
+      </section>
       <output id="status" aria-live="polite"></output>
     </main>
     <script src="popup.js"></script>
