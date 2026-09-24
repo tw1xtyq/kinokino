@@ -1,0 +1,48 @@
+:root { color: #f5f5f7; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif; }
+* { box-sizing: border-box; }
+body { background: #101014; margin: 0; min-width: 360px; }
+
+.card {
+  background: radial-gradient(circle at 88% -12%, rgba(255,126,22,.28), transparent 36%), linear-gradient(145deg, #1d1d24 0%, #131318 58%);
+  min-height: 337px; overflow: hidden; padding: 22px; position: relative;
+}
+.card::after { animation: reveal-line .7s .1s cubic-bezier(.2,.8,.2,1) forwards; background: linear-gradient(90deg, #ff7a00, #ffb000); content: ""; height: 3px; left: 0; position: absolute; top: 0; transform: scaleX(0); transform-origin: left; width: 100%; }
+
+.hero { align-items: center; animation: rise .45s ease-out both; display: flex; gap: 11px; }
+.logo { align-items: center; background: linear-gradient(135deg, #ff9a1d, #f15b16); border-radius: 13px; box-shadow: 0 8px 20px rgba(247,105,9,.27); color: #fff; display: flex; height: 42px; justify-content: center; width: 42px; }
+.logo svg { height: 23px; width: 23px; }
+.eyebrow { color: #a4a4b0; font-size: 8px; font-weight: 800; letter-spacing: .09em; margin: 0 0 2px; }
+h1 { font-size: 20px; letter-spacing: -.03em; line-height: 1.05; margin: 0; }
+.online { align-items: center; color: #c5c5cd; display: flex; font-size: 10px; gap: 5px; margin-left: auto; }
+.online i { background: #58d67c; border-radius: 50%; box-shadow: 0 0 0 3px rgba(88,214,124,.13); height: 6px; width: 6px; }
+
+.intro { animation: rise .45s .07s ease-out both; color: #b6b6c0; font-size: 12px; line-height: 1.55; margin: 22px 0 18px; }
+form { animation: rise .45s .13s ease-out both; }
+label { color: #ebebef; display: block; font-size: 12px; font-weight: 650; margin: 0 0 8px; }
+.input-wrap { position: relative; }
+.globe { color: #898994; height: 17px; left: 13px; pointer-events: none; position: absolute; top: 50%; transform: translateY(-50%); transition: color .2s ease; width: 17px; }
+input { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 11px; caret-color: #ff8b18; color: #fff; font: inherit; font-size: 13px; outline: none; padding: 12px 13px 12px 40px; transition: border-color .2s ease, box-shadow .2s ease, background .2s ease; width: 100%; }
+input::placeholder { color: #72727d; }
+input:focus { background: rgba(255,255,255,.085); border-color: #ff8510; box-shadow: 0 0 0 3px rgba(255,122,0,.16); }
+.input-wrap:focus-within .globe { color: #ff8b18; }
+.hint { color: #80808b; font-size: 10px; margin: 7px 0 17px; }
+
+.actions { display: flex; gap: 9px; }
+button { border: 0; cursor: pointer; font-family: inherit; font-size: 12px; font-weight: 700; }
+.save { align-items: center; background: linear-gradient(135deg, #ff9416, #ff6500); border-radius: 10px; box-shadow: 0 7px 16px rgba(246,101,0,.25); color: #fff; display: flex; gap: 7px; justify-content: center; min-width: 135px; padding: 11px 15px; transition: transform .18s ease, box-shadow .18s ease, filter .18s ease; }
+.save:hover { box-shadow: 0 10px 22px rgba(246,101,0,.36); filter: brightness(1.07); transform: translateY(-1px); }
+.save:active { box-shadow: 0 3px 8px rgba(246,101,0,.25); transform: translateY(1px) scale(.98); }
+.save:focus-visible, .reset:focus-visible { outline: 2px solid #ffb354; outline-offset: 3px; }
+.check { display: none; height: 15px; width: 15px; }
+.save.is-saved .button-text { display: none; }
+.save.is-saved .check { animation: pop .3s ease-out; display: block; }
+.reset { background: transparent; border: 1px solid rgba(255,255,255,.13); border-radius: 10px; color: #b9b9c1; padding: 10px 13px; transition: color .18s ease, background .18s ease, border-color .18s ease; }
+.reset:hover { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.25); color: #fff; }
+output { display: block; font-size: 11px; font-weight: 600; margin-top: 12px; min-height: 15px; }
+output:not(:empty) { animation: rise .22s ease-out; color: #72df94; }
+output[data-error="true"] { color: #ff8f8f; }
+
+@keyframes reveal-line { to { transform: scaleX(1); } }
+@keyframes rise { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pop { 0% { opacity: 0; transform: scale(.4) rotate(-20deg); } 100% { opacity: 1; transform: scale(1) rotate(0); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
