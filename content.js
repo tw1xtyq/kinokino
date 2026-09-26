@@ -4,6 +4,7 @@
   const DOMAIN_SOURCE = "https://brogiro.cfd/";
 
   function isFilmPage() {
+    // Учитываем любые query-параметры, в т.ч. ?socialAlias=...
     return /^\/film\/\d+\/?$/.test(window.location.pathname);
   }
 
@@ -71,8 +72,12 @@
     button.textContent = "Открываем…";
     const kinokinoDomain = await getCurrentDomain();
 
+    // Убираем служебные параметры Кинопоиска (например, ?socialAlias=...),
+    // на Kinokino они не нужны и могут ломать страницу.
     const target = new URL(window.location.href);
     target.hostname = kinokinoDomain;
+    target.search = "";
+    target.hash = "";
     window.location.assign(target.href);
   }
 
@@ -90,9 +95,14 @@
     if (document.getElementById(BUTTON_ID)) return;
     if (!isFilmPage()) return;
 
-    const watchButton = [...document.querySelectorAll("button, a")].find((element) =>
-      element.textContent.trim().includes("Буду смотреть")
-    );
+    // «Буду смотреть» — кнопка для фильмов, уже добавленных в список.
+    // Ищем также вариант «Хочу посмотреть», чтобы кнопка появлялась и
+    // на страницах, где пользователь ещё не отмечал фильм.
+    const WATCH_LABELS = ["Буду смотреть", "Хочу посмотреть"];
+    const watchButton = [...document.querySelectorAll("button, a")].find((element) => {
+      const text = element.textContent.trim();
+      return WATCH_LABELS.some((label) => text.includes(label));
+    });
 
     if (!watchButton) return;
     const actions = watchButton.parentElement;
